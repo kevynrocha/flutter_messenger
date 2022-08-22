@@ -1,4 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../services/router/app_router.dart';
+import '../../../../services/router/app_router_guard.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -8,7 +12,15 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         color: Colors.indigo,
-        child: const Center(child: Text('Home')),
+        child: Center(
+          child: ElevatedButton(
+            onPressed: () {
+              isAuthenticated = null;
+              context.router.replace(AuthRoute());
+            },
+            child: const Text('Sign out'),
+          ),
+        ),
       ),
     );
   }

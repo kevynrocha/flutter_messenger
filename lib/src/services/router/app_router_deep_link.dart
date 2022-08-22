@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter_messenger/src/core/data/models/user_model.dart';
 import 'package:uni_links/uni_links.dart';
 
 import 'app_router.dart';
@@ -11,7 +12,7 @@ StreamSubscription<dynamic> deepLinkListen(AppRouter appRouter) {
       final uri = Uri.parse(link!);
       appRouter.replace(_routes(uri));
     } catch (e) {
-      appRouter.replace(const HomeRoute());
+      appRouter.replace(const SplashRoute());
     }
   });
 }
@@ -21,8 +22,8 @@ PageRouteInfo _routes(Uri uri) {
     case 'profile':
       return ProfileRoute(name: uri.queryParameters['name']!);
     case 'home':
-      return const HomeRoute();
+      return HomeRoute(user: UserModel.fromJson(uri.queryParameters));
     default:
-      return const HomeRoute();
+      return HomeRoute(user: UserModel.fromJson(uri.queryParameters));
   }
 }

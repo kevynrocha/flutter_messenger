@@ -1,13 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 
+import '../../core/domain/entities/user_entity.dart';
 import 'app_router.dart';
 
-const bool isAuthenticated = false;
+UserEntity? isAuthenticated;
 
 class AppRouterGuard extends AutoRouteGuard {
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    if (isAuthenticated) {
+    if (isAuthenticated != null) {
       return resolver.next();
     }
 

@@ -1,6 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../core/domain/entities/user_entity.dart';
+import '../../features/auth/domain/auth_repository.dart';
 import '../../features/features.dart';
 import 'app_router_guard.dart';
 
@@ -9,10 +12,12 @@ part 'app_router.gr.dart';
 @AdaptiveAutoRouter(
   replaceInRouteName: 'Feature,Route',
   routes: [
-    AutoRoute(page: SplashFeature),
+    AutoRoute(
+      page: SplashFeature,
+      initial: true,
+    ),
     CustomRoute(
       page: AuthFeature,
-      initial: true,
       transitionsBuilder: TransitionsBuilders.slideLeft,
     ),
     CustomRoute(

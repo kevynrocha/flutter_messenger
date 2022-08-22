@@ -14,7 +14,11 @@ class SplashScreen extends StatelessWidget {
     return BlocListener<SplashController, SplashStates>(
       listener: (context, state) {
         if (state is SplashSuccess) {
-          context.router.push(const HomeRoute());
+          context.router.replace(HomeRoute(user: state.userEntity));
+        }
+
+        if (state is SplashError) {
+          context.router.replace(AuthRoute());
         }
       },
       child: Scaffold(
