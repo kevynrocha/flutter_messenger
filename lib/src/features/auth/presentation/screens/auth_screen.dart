@@ -1,14 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../router/app_router.dart';
+import '../../../../services/router/app_router.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final args = context.routeData.args as AuthRouteArgs;
+    final routeArgs = context.routeData.args != null
+        ? context.routeData.argsAs<AuthRouteArgs>()
+        : null;
 
     return Scaffold(
       body: Center(
@@ -16,7 +18,11 @@ class AuthScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => args.onResult(true),
+              onPressed: () {
+                if (routeArgs?.onResult != null) {
+                  routeArgs?.onResult!(true);
+                }
+              },
               child: const Text('Success'),
             ),
             ElevatedButton(

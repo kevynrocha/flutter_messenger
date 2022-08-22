@@ -5,7 +5,7 @@ class SplashController extends Cubit<SplashStates> {
   SplashController() : super(SplashLoading());
 
   Future<void> init() async {
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(milliseconds: 500));
     emit(SplashSuccess());
   }
 }

@@ -11,7 +11,7 @@ class AppRouterGuard extends AutoRouteGuard {
       return resolver.next();
     }
 
-    router.push(AuthRoute(onResult: (result) {
+    router.replace(AuthRoute(onResult: (result) {
       router.removeLast();
       resolver.next(result);
     }));

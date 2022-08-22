@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../router/app_router.dart';
+import '../../../../services/router/app_router.dart';
 import '../controllers/splash_controller.dart';
 import '../controllers/splash_states.dart';
 
@@ -14,7 +14,7 @@ class SplashScreen extends StatelessWidget {
     return BlocListener<SplashController, SplashStates>(
       listener: (context, state) {
         if (state is SplashSuccess) {
-          context.router.replace(HomeRoute(name: 'Route Name !'));
+          context.router.push(const HomeRoute());
         }
       },
       child: Scaffold(
