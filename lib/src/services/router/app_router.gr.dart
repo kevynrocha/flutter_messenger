@@ -55,6 +55,14 @@ class _$AppRouter extends RootStackRouter {
           transitionsBuilder: TransitionsBuilders.slideLeft,
           opaque: true,
           barrierDismissible: false);
+    },
+    ChatRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+          routeData: routeData,
+          child: const ChatFeature(),
+          transitionsBuilder: TransitionsBuilders.slideLeft,
+          opaque: true,
+          barrierDismissible: false);
     }
   };
 
@@ -64,7 +72,8 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(AuthRoute.name, path: '/auth-feature'),
         RouteConfig(HomeRoute.name, path: '/home', guards: [appRouterGuard]),
         RouteConfig(ProfileRoute.name,
-            path: '/profile', guards: [appRouterGuard])
+            path: '/profile', guards: [appRouterGuard]),
+        RouteConfig(ChatRoute.name, path: '/chat', guards: [appRouterGuard])
       ];
 }
 
@@ -148,4 +157,12 @@ class ProfileRouteArgs {
   String toString() {
     return 'ProfileRouteArgs{key: $key, name: $name}';
   }
+}
+
+/// generated route for
+/// [ChatFeature]
+class ChatRoute extends PageRouteInfo<void> {
+  const ChatRoute() : super(ChatRoute.name, path: '/chat');
+
+  static const String name = 'ChatRoute';
 }

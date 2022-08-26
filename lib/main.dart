@@ -15,7 +15,8 @@ void main() async {
   // Initialize Routes
   final appRouter = AppRouter();
 
-  // Initialize Deep Linking Listen
+  // Initialize Deep Linking
+  await initialDeepLink(appRouter);
   deepLinkListen(appRouter);
 
   // Initialize App
